@@ -34,51 +34,13 @@ The project uses a `Makefile` that finds all source files in the `src/` director
 To compile the project, run:
 ```bash
 make
-```bash
-make clean
-
-This will create the editor executable in the root directory.# SyncText: A CRDT-Based Collaborative Text Editor
-
-This project is a real-time, multi-user collaborative text editor that simulates the functionality of Google Docs. It is built for the CS69201 (Computing Lab) course.
-
-The system is fully decentralized, lock-free, and serverless. It uses a **Conflict-Free Replicated Data Type (CRDT)** model based on the **Last-Writer-Wins (LWW)** strategy to ensure all users' documents eventually converge to the same state.
-
-* **User Discovery:** Implemented using a lock-free shared memory registry.
-* **Communication:** Implemented using POSIX message queues for peer-to-peer broadcasting.
-
----
-
-## 🖥️ Platform
-
-This project is built for a specific Linux environment as per the project guidelines.
-
-* **OS:** Ubuntu 20.04 (or a compatible Linux distribution)
-* **Compiler:** g++ 9.4.0 (or any C++17 compatible compiler)
-* **Important:** This code **will not** compile on macOS or Windows, as it requires Linux-specific features like POSIX message queues (`mqueue.h`).
-
----
-
-## 📦 Dependencies
-
-The project requires the following standard Linux libraries:
-* `pthread`: Required for C++ threading (`std::thread`) and atomic operations.
-* `rt` (Real-Time Library): Required for POSIX shared memory (`shm_open`) and message queues (`mq_open`).
-
----
-
-## ⚙️ Compilation Instructions
-
-The project uses a `Makefile` that finds all source files in the `src/` directory, compiles them into an `obj/` directory, and links the final executable.
-
-To compile the project, run:
-```bash
-make
 ```
+This will create the editor executable in the root directory.
+
+To clean the build files (removes the `obj/` directory and the editor executable):
 ```bash
 make clean
-```markdown
-This will create the editor executable in the root directory.
-To clean the build files (removes the `obj/` directory and the editor executable):
+```
 
 ---
 
@@ -95,22 +57,22 @@ Terminal 1:
 
 ```bash
 ./editor user_1
-```markdown
+```
+
 Terminal 2:
 
 ```bash
 ./editor user_2
-```markdown
+```
 
 Terminal 3:
 
 ```bash
 ./editor user_3
-```markdown
+```
 
 The program will automatically create a local document for each user (e.g., user_1_doc.txt).
 
----
 
 ## How to Test
 You can test the system by running 2-3 users and editing their respective local files (e.g., user_1_doc.txt) with any external text editor (like nano, vim, or gedit).
