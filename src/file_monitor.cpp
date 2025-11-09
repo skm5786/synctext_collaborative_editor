@@ -21,10 +21,10 @@ void create_initial_doc_if_not_exists(const std::string& filename) {
     f.close();
     std::ofstream out(filename);
     if (out.is_open()) {
-        out << "Line 0: Hello World" << std::endl;
-        out << "Line 1: This is a collaborative editor" << std::endl;
-        out << "Line 2: Welcome to SyncText" << std::endl;
-        out << "Line 3: Edit this document and see real-time updates" << std::endl;
+        out << "Hello World" << std::endl;
+        out << "This is a collaborative editor" << std::endl;
+        out << "Welcome to SyncText" << std::endl;
+        out << "Edit this document and see real-time updates" << std::endl;
         out.close();
     }
 }
