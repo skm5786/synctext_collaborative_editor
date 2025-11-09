@@ -76,7 +76,7 @@ make
 ```
 ```bash
 make clean
-```
+```markdown
 This will create the editor executable in the root directory.
 To clean the build files (removes the `obj/` directory and the editor executable):
 
@@ -95,18 +95,18 @@ Terminal 1:
 
 ```bash
 ./editor user_1
-```
+```markdown
 Terminal 2:
 
 ```bash
 ./editor user_2
-```
+```markdown
 
 Terminal 3:
 
 ```bash
 ./editor user_3
-```
+```markdown
 
 The program will automatically create a local document for each user (e.g., user_1_doc.txt).
 
@@ -140,57 +140,3 @@ If two users (e.g., user_1 and user_2) make a conflicting change at the exact sa
 Result: The conflict will be resolved by the user_id. The edit from user_1 will win because "user_1" is alphabetically smaller than "user_2".
 
 To clean the build files (removes the `obj/` directory and the editor executable):
-
----
-
-## Execution Instructions
-
-
-
-Execution Instructions
-To run the program, you must open a separate terminal for each user.
-
-Pass a unique user_id as a command-line argument for each instance.
-
-Terminal 1:
-
-```bash
-./editor user_1
-
-Terminal 2:
-
-```bash
-./editor user_2
-
-Terminal 3:
-
-```bash
-./editor user_3
-The program will automatically create a local document for each user (e.g., user_1_doc.txt).
-
-How to Test
-You can test the system by running 2-3 users and editing their respective local files (e.g., user_1_doc.txt) with any external text editor (like nano, vim, or gedit).
-
-The system batches operations, so you may need to save 5 times (or make 5 changes) to trigger a broadcast and merge cycle.
-
-Test 1: Non-Conflicting Edits
-
-User 1: Open user_1_doc.txt and change Line 0. Save 5 times.
-
-User 2: Open user_2_doc.txt and change Line 1. Save 5 times.
-
-Result: After the merge, observe both terminals. Both user_1 and user_2's documents will converge to show the changes from both users on lines 0 and 1.
-
-Test 2: Conflicting Edits (LWW)
-
-User 1: Open user_1_doc.txt and change Line 0 to Hello from User 1. Save 5 times.
-
-User 2: Open user_2_doc.txt and change the same Line 0 to Hello from User 2. Save 5 times, ensuring you save after User 1.
-
-Result: Observe both terminals. Both documents will converge to show Hello from User 2. The Last-Writer-Wins (LWW) rule gives precedence to the edit with the latest timestamp.
-
-Test 3: LWW Tiebreaker
-
-If two users (e.g., user_1 and user_2) make a conflicting change at the exact same timestamp.
-
-Result: The conflict will be resolved by the user_id. The edit from user_1 will win because "user_1" is alphabetically smaller than "user_2".
