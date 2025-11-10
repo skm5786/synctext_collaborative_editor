@@ -56,12 +56,7 @@ bool apply_updates(std::vector<std::string>& doc, std::vector<UpdateObject>& win
                 break;
             case REPLACE:
                 if (op.line_num < (int)doc.size()) {
-                    std::string& line = doc[op.line_num];
-                    try {
-                         line.replace(op.col_start, op.old_content.length(), op.new_content);
-                    } catch (const std::out_of_range& e) {
-                        doc[op.line_num] = op.new_content;
-                    }
+                    doc[op.line_num] = op.new_content;
                 }
                 break;
             case INSERT:

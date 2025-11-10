@@ -81,6 +81,7 @@ std::vector<UpdateObject> diff_documents(const std::vector<std::string>& old_doc
             } else {
                 op.type = REPLACE;
                 find_diff_substrings(old_line, new_line, op.col_start, op.old_content, op.new_content);
+                op.new_content = new_line;
                 op.col_end = op.col_start + op.old_content.length();
             }
             updates.push_back(op);
